@@ -20,6 +20,9 @@ app.use(cookieParser())
 // }))
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
+app.get('/', () => {
+    res.send('Hello Server is Running!')
+})
 
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
