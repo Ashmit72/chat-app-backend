@@ -5,7 +5,7 @@ import { connectDb } from './lib/db.js'
 import cookieParser from 'cookie-parser'
 import messageRoutes from "./routes/message.route.js"
 import { app, server } from './lib/socket.js'
-// import cors from 'cors'
+import cors from 'cors'
 dotenv.config()
 
 
@@ -14,10 +14,11 @@ const PORT = process.env.PORT || 5001
 
 app.use(express.json())
 app.use(cookieParser())
-// app.use(cors({
-// origin: "http://localhost:5173",
-// credentials:true
-// }))
+app.use(cors({
+origin:process.env.CLIENT_URL,
+methods:["GET", "POST", "PUT", "DELETE"],
+credentials:true
+}))
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
 app.get('/', (req,res) => {
