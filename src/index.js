@@ -20,7 +20,7 @@ app.use(cookieParser())
 // }))
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
-app.get('/', () => {
+app.get('/', (req,res) => {
     res.send('Hello Server is Running!')
 })
 
