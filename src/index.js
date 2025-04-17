@@ -10,7 +10,6 @@ dotenv.config()
 
 const PORT = process.env.PORT || 5001
 
-app.options('*', cors());
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
@@ -21,6 +20,10 @@ credentials:true
 }))
 app.use("/api/auth", authRoutes)
 app.use("/api/message", messageRoutes)
+app.get('/', (req,res) => {
+    res.send('Hello Server is Running!')
+})
+
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
     connectDb()
