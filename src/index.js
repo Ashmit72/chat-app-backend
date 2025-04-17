@@ -8,8 +8,6 @@ import { app, server } from './lib/socket.js'
 import cors from 'cors'
 dotenv.config()
 
-
-
 const PORT = process.env.PORT || 5001
 
 app.options('*', cors());
